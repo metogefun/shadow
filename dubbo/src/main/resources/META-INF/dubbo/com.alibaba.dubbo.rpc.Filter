@@ -1,0 +1,2 @@
+traceProviderFilter=cn.finegames.shadow.dubbo.TraceProviderFilter
+traceConsumerFilter=cn.finegames.shadow.dubbo.TraceConsumerFilter
