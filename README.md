@@ -1,16 +1,16 @@
 # shadow
 
-为dubbo、sprin cloud提供trace framework。
+目前只上线dubbo版本
+
+在调用发起时提供唯一的trace id，并在整个方法调用链将其传递下去，结合log框架将trace id和业务日志相关联，为调用链日志追踪以及查询提供方便。
+
 
 ## 系统要求
 
 * Java 1.8
-* Slf4j
 
-## dubbo实现方式
+## 使用方式(dubbo)
 
-需要提供一个拦截器实现，来提供traceId。
+如果是一个controller作为一个调用的开始，需要在提供一个拦截器为每个调用提供一个唯一的trace id。可以参照``cn.finegames.shadow.demo.web.TraceWebInterceptor``。并在使用dubbo框架的工程引入``shadow-dubbo``模块即可。
 
-如果Spring MVC是入口，可以在工程中添加``cn.finegames.shadow.common.interceptor.TraceWebInterceptor``拦截器。如果是Java Application需要自己提供拦截器，或后期提供拦截器实现。
-
-提供拦截器后，引入dubbo模块就可使用。
+非web形式可以在方法上添加``cn.finegames.shadow.core.annotation.Trace``注解。
